@@ -3,47 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot</title>
+    <title>ChatFai — AI Assistant</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <div class="container">
+    <div class="app">
 
-        <!-- HEADER -->
-        <div class="header">
-            <div class="header-left">
-                <div class="bot-avatar">🤖</div>
-                <div>
-                    <h1>AI Assistant</h1>
-                    <span class="status"><span class="dot"></span>Online</span>
+        <!-- SIDEBAR -->
+        <div class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo">
+                    <div class="logo-icon">CF</div>
+                    <span class="logo-text">ChatFai</span>
                 </div>
-            </div>
-            <button class="clear-btn" onclick="clearChat()">Clear Chat</button>
-        </div>
-
-        <!-- CHAT MESSAGES -->
-        <div class="chat-box" id="chatBox">
-            <div class="message bot-message">
-                <div class="avatar">🤖</div>
-                <div class="bubble">
-                    Hi! I'm your AI Assistant. How can I help you today? 😊
-                </div>
+                <button class="new-chat-btn" onclick="clearChat()">
+                    <span>+</span> New Chat
+                </button>
             </div>
         </div>
 
-        <!-- INPUT AREA -->
-        <div class="input-area">
-            <input 
-                type="text" 
-                id="userInput" 
-                placeholder="Type your message..." 
-                onkeypress="handleKey(event)"
-            />
-            <button class="send-btn" onclick="sendMessage()">Send ➤</button>
-        </div>
+        <!-- MAIN CHAT AREA -->
+        <div class="main">
 
+            <!-- HEADER -->
+            <div class="header">
+                <div class="header-left">
+                    <div class="model-badge">
+                        <span class="model-dot"></span>
+                        llama-3.3-70b
+                    </div>
+                </div>
+                <div class="header-right">
+                    <button class="icon-btn" onclick="clearChat()" title="New Chat">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 5v14M5 12h14"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- CHAT BOX -->
+            <div class="chat-box" id="chatBox">
+
+                <!-- Welcome Screen -->
+                <div class="welcome" id="welcomeScreen">
+                    <div class="welcome-logo">CF</div>
+                    <h1 class="welcome-title">How can I help you today?</h1>
+                    <p class="welcome-sub">ChatFai is your intelligent AI assistant — powered by Llama 3.3</p>
+                    <div class="suggestions">
+                        <div class="suggestion" onclick="useSuggestion('Explain how the internet works')">
+                            <span class="sug-icon">🌐</span>
+                            <span>Explain how the internet works</span>
+                        </div>
+                        <div class="suggestion" onclick="useSuggestion('Write a Python function to sort a list')">
+                            <span class="sug-icon">🐍</span>
+                            <span>Write a Python function to sort a list</span>
+                        </div>
+                        <div class="suggestion" onclick="useSuggestion('What are the best practices for REST APIs?')">
+                            <span class="sug-icon">⚡</span>
+                            <span>Best practices for REST APIs</span>
+                        </div>
+                        <div class="suggestion" onclick="useSuggestion('Help me debug my JavaScript code')">
+                            <span class="sug-icon">🔧</span>
+                            <span>Help me debug my JavaScript code</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INPUT AREA -->
+            <div class="input-wrap">
+                <div class="input-box">
+                    <textarea
+                        id="userInput"
+                        placeholder="Message ChatFai..."
+                        rows="1"
+                        onkeypress="handleKey(event)"
+                        oninput="autoResize(this)"
+                    ></textarea>
+                    <button class="send-btn" id="sendBtn" onclick="sendMessage()">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="disclaimer">ChatFai can make mistakes. Consider checking important information.</p>
+            </div>
+
+        </div>
     </div>
 
     <script src="script.js"></script>
