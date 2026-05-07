@@ -30,6 +30,11 @@
             <!-- HEADER -->
             <div class="header">
                 <div class="header-left">
+                    <button class="hamburger" id="hamburgerBtn" onclick="toggleSidebar()">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
                     <div class="model-badge">
                         <span class="model-dot"></span>
                         llama-3.3-70b
@@ -96,6 +101,7 @@
         </div>
     </div>
 
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
     <script src="script.js"></script>
 </body>
 </html>

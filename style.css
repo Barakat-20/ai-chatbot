@@ -130,6 +130,45 @@ html, body {
     background: var(--bg);
 }
 
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+}
+
+.hamburger span {
+    width: 22px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    display: block;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: flex; }
+    .sidebar {
+        position: fixed;
+        left: -260px;
+        top: 0;
+        height: 100vh;
+        z-index: 100;
+        transition: left 0.3s ease;
+    }
+    .sidebar.open { left: 0; }
+    .overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0,0,0,0.5);
+        z-index: 99;
+    }
+    .overlay.show { display: block; }
+}
+
 .model-badge {
     display: flex;
     align-items: center;
@@ -436,6 +475,6 @@ html, body {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-    .sidebar { display: none; }
+    .sidebar { display: flex; }
     .msg-content { max-width: 88%; }
 }

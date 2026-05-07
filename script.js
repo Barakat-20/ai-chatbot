@@ -184,3 +184,7 @@ async function clearChat() {
         </div>
     `;
 }
+function toggleSidebar() {
+    document.querySelector('.sidebar').classList.toggle('open');
+    document.getElementById('overlay').classList.toggle('show');
+}
